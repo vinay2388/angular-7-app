@@ -1,0 +1,117 @@
+<head>
+  <style>
+    #customers {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 60%;
+    }
+
+    #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    #customers tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+      background-color: #ddd;
+    }
+
+    #customers td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: center;
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="bootstrap/js/bootstrap-modal.js"></script>
+  <script src="bootstrap/js/bootstrap-transition.js"></script>
+
+</head>
+<div class="container col-md-12" style="padding-left: 200px;">
+
+  <h2>All Products</h2>
+  <div class="table-responsive table-container">
+    <table class="table table-dark table-hover table-striped" id="customers">
+      <thead class="thead-light">
+        <tr style="padding: 30px;">
+          <th>groupname</th>
+          <th>id</th>
+          <th>actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products" style="padding: 30px;">
+
+          <td>{{product.name}}</td>
+          <td>{{product._id}}</td>
+          <td>
+            <button (click)="deleteProduct(product)" class="btn btn-info"> Delete</button>
+            <button (click)="updateProduct(product)" style="margin-left: 20px;" class="btn btn-info"> Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <!-- <button (click)="addProduct()" class="btn btn-info">Add Product</button> -->
+    <!-- <button (click)="openModel('mode-1')" class="btn btn-info">Add Product</button> -->
+    <button class="btn btn-primary add-button" (click)="openModal()">
+      Add User</button>
+  </div>
+
+  ​
+  ​
+  <div [ngStyle]="{'display':display}"></div>
+
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+
+    <div class="modal-dialog" role="document">
+
+      <div class="modal-content">
+        <div class="modal-footer">
+          <!-- <button class="btn btn-primary" (click)="addGroup(groupInput.value)">Add</button> -->
+          <h2 class="text-center">Add Product</h2>
+          <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label>name:</label>
+              <input type="text" formControlName="name" placeholder="name" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+
+            </div>
+            <button type="submit" class="btn btn-info">Save</button>
+          </form>
+          <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+
+        </div>
+
+      </div><!-- /.modal-content -->
+
+    </div><!-- /.modal-dialog -->
+
+  </div><!-- /.modal !-->
+  ​
+  ​
+  ​
+  ​
+</div>
+
+
+<!-- </div> -->
+
+
+<!-- </div> -->

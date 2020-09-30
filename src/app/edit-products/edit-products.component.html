@@ -1,0 +1,15 @@
+<div class="col-md-3">
+    <h2 class="text-center">Edit Product</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>name:</label>
+        <input type="text" formControlName="name" placeholder="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+        <div *ngIf="submitted && f.name.errors">
+          <div *ngIf="f.name.errors.required">name is required</div>
+        </div>
+      </div>
+  
+     
+      <button type="submit"  class="btn btn-info">Update</button>
+    </form>
+  </div>
