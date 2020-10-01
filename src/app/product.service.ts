@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ProductService {
   constructor(private http: HttpClient) { }
 
-  ROOT_URL : String = process.env.api_url || "http://localhost:1234/";
+  ROOT_URL : String ="http://192.168.43.181:1234/";
   
 
   getAllProducts(){
